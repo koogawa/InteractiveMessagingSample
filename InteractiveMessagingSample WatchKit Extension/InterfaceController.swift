@@ -24,11 +24,10 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
 
-        if (WCSession.isSupported()) {
-            let session = WCSession.defaultSession()
-            session.delegate = self
-            session.activateSession()
-        }
+        // isSupported is not necessary, because session objects are always available on Apple Watch.
+        let session = WCSession.defaultSession()
+        session.delegate = self
+        session.activateSession()
     }
 
     override func didDeactivate() {
